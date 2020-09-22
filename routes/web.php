@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+  // return view('welcome');
+
+  //Menambahkan Role
+  // auth()->user()->assignRole('admin');
+
+  //Cek User
+  // if (auth()->user()->hasRole('user')) {
+  //   return 'Oke';
+  // }
+
+  //Menghapus Role
+  // auth()->user()->removeRole('admin');
+
+  // Sungkronus atau Update Roles
+  // auth()->user()->assignRole('admin', 'user');
+  // auth()->user()->syncRoles(['user']);
+
+  //Permision user
+
+  $user = auth()->user();
+  $role = Role::find(1);
+  // dd($user);
+  // $user->givePermissionTo('delete post');
+  // $role->revokePermissionTo('edit post');
+  // $role->syncPermissions(['delete post', 'edit post', 'view post', 'add post']);
+  // dd($role->hasAnyPermission(['delete post', 'edit post']));
+  dd($user->can('delete post'));
 });
 
 Route::view('home', 'home')->middleware('auth');
