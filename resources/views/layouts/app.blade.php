@@ -49,6 +49,16 @@
                                 </li>
                             @endif
                         @else
+                        @can('add post')
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Add Post</a>
+                        </li>
+                        @endcan
+                        @role('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Admin Panel</a>
+                        </li>
+                        @endrole
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
