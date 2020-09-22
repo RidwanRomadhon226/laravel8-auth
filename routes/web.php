@@ -47,9 +47,9 @@ Route::get('/', function () {
 
 Route::view('home', 'home')->middleware('auth');
 
-// Route::get('/admin', [AdminController::class, 'index'])->middleware('role:admin');
+Route::get('/admin', [AdminController::class, 'index']);
 
-Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/admin', [AdminController::class, 'index']);
-    //
-});
+// Route::group(['middleware' => ['role:admin']], function () {
+//     Route::get('/admin', [AdminController::class, 'index']);
+//     //
+// });
